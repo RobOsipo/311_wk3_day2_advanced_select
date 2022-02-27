@@ -54,9 +54,18 @@ We are going to run a couple SQL queries and put the answers in the 'Query Respo
   * Area code:-- 18 instances of 973 so it is the most popular area code in the `usersContact` table.
 
 3.
-  * first_name:
-  * county:
-  * county total:
+
+
+SELECT min(first_name) AS mn, county, count(u.id)
+FROM usersAddress AS ua
+JOIN users AS u
+WHERE u.id = ua.user_id
+GROUP BY county
+HAVING count(ua.county) > 10
+
+  * first_name: Andra
+  * county: New York
+  * county total: 14
 
 
 ## Summary
